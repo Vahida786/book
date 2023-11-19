@@ -1,0 +1,42 @@
+from django.db import models
+
+# Create your models here>>
+class Books(models.Model):
+    bname=models.CharField(max_length=200)
+    prize=models.PositiveIntegerField()
+    Date=models.CharField(max_length=200)
+    author=models.CharField(max_length=200) 
+
+orm query for Create new object>>
+>>> Books.objects.create(bname="hari",prize=67000,Date="3",author="asdfg")
+>>> Books.objects.create(bname="jumi",prize=12000,Date="23",author="dfgh")  
+>>> Books.objects.create(bname="sha",prize=87000,Date="30",author="fgh")   
+>>> Books.objects.create(bname="shibi",prize=567000,Date="18",author="fgh")          
+
+orm query for feching al arguments>>
+>>> qs=Books.objects.all()
+>>> qs=Books.objects.get(id=1)
+
+orm query for filtering Employees records>>
+>>> qs=Books.objects.filter(author="fgh")
+>>> qs=Books.objects.filter(prize__gte=50000)
+>>> qs=Books.objects.filter(prize__lte=50000)
+
+
+__gte=greaterthan or =   (>=)
+__lte=lessthan or =    (<=)
+__gt=>
+__lt=<
+
+
+
+orm query for excluding object>>
+>>exclude
+qs=Books.objects.filter(author.exclude="fgh")
+
+
+delete query
+Books.objects.filter(id=1).delete()
+
+ascending order:
+Employees.objects.all().order_by("salary")
